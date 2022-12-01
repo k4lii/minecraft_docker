@@ -1,0 +1,31 @@
+FROM openjdk:20-slim-buster
+
+ARG FORGE_VERSION
+# ARG VANILLA
+
+RUN apt update -y && apt install curl -y
+#download minecraft server for choosen version
+
+# RUN curl -O https://launchermeta.mojang.com/mc/game/version_manifest.json
+# ARG USER
+ENV GROUP=minecraft_server
+ENV USER=creeper
+ENV MC_DIR=/home/$USER/mc
+
+#creating new custom group + a new system user 
+RUN groupadd $GROUP && \
+    useradd $USER -d /home/$USER -m -s /bin/bash
+
+WORKDIR $MC_DIR
+
+RUN curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/$FORGE_VERSION/forge-$FORGE_VERSION-installer.jar
+
+#changing folder groups root to custom group + giving permissions R+W 
+RUN chgrp $GROUP -R $MC_DIR
+RUN chmod -R g+w $MC_DIR
+#put USER into groups who have permissions on MC_DIR
+RUN usermod -aG $GROUP $USER
+
+USER $USER
+# RUN java -jar forge-1.19.2-43.1.7-installer.jar --installServer
+CMD /bin/bash

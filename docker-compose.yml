@@ -1,0 +1,171 @@
+version: "3.5"
+
+volumes:
+  db-vol:
+services:
+  mysql:
+    image: artifactory.intranet.atih.sante.fr:5003/mysql:$MYSQL_TAG
+    container_name: "${PROJECT_NAME}_mysql"
+    stop_grace_period: 30s
+    environment:
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_PASSWORD: $DB_PASSWORD
+    restart: unless-stopped
+    volumes:
+      - db-vol:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$DB_USER --password=$$DB_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+
+  # traefik:
+  #   image: traefik:v2.0
+  #   container_name: "${PROJECT_NAME}_traefik"
+  #   command:
+  #     - "--api.insecure=true"
+  #     - "--api.debug=true"
+  #     - "--log.level=DEBUG"
+  #     - "--providers.docker"
+  #     # Enable dashboard
+  #     - "--api.dashboard=true"
+  #   ports:
+  #     - '8000:80'
+  #   #    - '8080:8080' # Dashboard
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.${PROJECT_NAME}_traefik.rule=Host(`traefik.${PROJECT_BASE_URL}`)"
+  #     - "traefik.http.routers.${PROJECT_NAME}_traefik.service=api@internal"
+
+
+  # mysqlseeder:
+  #   image: artifactory.intranet.atih.sante.fr:5003/mysql:$MYSQL_TAG
+  #   container_name: "${PROJECT_NAME}_mysqlseeder"
+  #   stop_grace_period: 30s
+  #   environment:
+  #     MYSQL_DATABASE: $DB_NAME
+  #     MYSQL_USER: $DB_USER
+  #     MYSQL_PASSWORD: $DB_PASSWORD
+  #     MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+  #   volumes:
+  #     - ./sql_datas/${CONTEXTE}/devel-secure-scansante-2022-09-21.sql.gz:/db.sql # CONTEXTE = www |secure
+  #   entrypoint: [ "bash", "-c", "mysql --user=$DB_USER -p$DB_PASSWORD --host=mysql --port=3306  $DB_NAME < /db.sql && exit"]
+  #   depends_on:
+  #     mysql:
+  #       condition: service_healthy
+
+  # composer:
+  #   user: "0:0"
+  #   build:
+  #     dockerfile: docker/composer/Dockerfile
+  #   environment:
+  #     DB_HOST: "$DB_HOST"
+  #     DB_PORT: $DB_PORT
+  #     DB_USER: "$DB_USER"
+  #     DB_PASSWORD: "$DB_PASSWORD"
+  #     DB_NAME: "$DB_NAME"
+  #     DB_DRIVER: "$DB_DRIVER"
+  #     BASE_URL: $BASE_URL
+  #     ATIH_CAS_CERT: $ATIH_CAS_CERT
+  #     ATIH_CAS_URL: $ATIH_CAS_URL
+  #     ATIH_GET_USER_INFO: $ATIH_GET_USER_INFO
+  #     ATIH_GET_USER_INFO_PASSWORD: $ATIH_GET_USER_INFO_PASSWORD
+  #     ATIH_GET_ES_INFO: $ATIH_GET_ES_INFO
+  #     ATIH_GET_ES_INFO_PASSWORD: $ATIH_GET_ES_INFO_PASSWORD
+  #     SASINTRNET_SESSION_URL: $SASINTRNET_SESSION_URL
+  #     SERVER_PROXY_URL: $SERVER_PROXY_URL
+  #     SERVER_PROXY_PORT: $SERVER_PROXY_PORT
+  #     MEMCACHE_SRV: $MEMCACHE_SRV
+  #     SOLR_URL: $SOLR_URL
+  #     SOLR_PORT: $SOLR_PORT
+  #   volumes:
+  #     -  ~/.ssh:/root/.ssh:ro
+  #     - ./vendor:/var/www/html/vendor:rw
+  #     - ./web:/var/www/html/web
+  #   depends_on:
+  #     solr:
+  #       condition: service_started
+  #     memcached:
+  #       condition: service_started
+  #     mysql:
+  #       condition: service_healthy
+  
+  # drupal:
+  #   image: drupal:9.3-php7.4-apache
+  #   container_name: "${PROJECT_NAME}_drupal"
+  #   depends_on:
+  #     composer:
+  #       condition: service_healthy
+  #     mailhog:
+  #       condition: service_started
+  #   environment:
+  #     PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
+  #     # PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S opensmtpd:25
+  #     DB_HOST: $DB_HOST
+  #     DB_PORT: $DB_PORT
+  #     DB_USER: $DB_USER
+  #     DB_PASSWORD: $DB_PASSWORD
+  #     DB_NAME: $DB_NAME
+  #     DB_DRIVER: $DB_DRIVER
+  #     BASE_URL: $BASE_URL
+  #     ATIH_CAS_CERT: $ATIH_CAS_CERT
+  #     ATIH_CAS_URL: $ATIH_CAS_URL
+  #     ATIH_GET_USER_INFO: $ATIH_GET_USER_INFO
+  #     ATIH_GET_USER_INFO_PASSWORD: $ATIH_GET_USER_INFO_PASSWORD
+  #     ATIH_GET_ES_INFO: $ATIH_GET_ES_INFO
+  #     ATIH_GET_ES_INFO_PASSWORD: $ATIH_GET_ES_INFO_PASSWORD
+  #     SASINTRNET_SESSION_URL: $SASINTRNET_SESSION_URL
+  #     SERVER_PROXY_URL: $SERVER_PROXY_URL
+  #     SERVER_PROXY_PORT: $SERVER_PROXY_PORT
+  #     MEMCACHE_SRV: $MEMCACHE_SRV
+  #     SOLR_URL: $SOLR_URL
+  #     SOLR_PORT: $SOLR_PORT
+  #     PHP_FPM_CLEAR_ENV: "no"
+  #   labels:
+  #     - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
+  #   volumes:
+  #     - ./vendor:/opt/drupal/vendor
+  #     - ./web:/opt/drupal/web
+
+  # mailhog:
+  #   image: mailhog/mailhog
+  #   container_name: "${PROJECT_NAME}_mailhog"
+  #   labels:
+  #     - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
+  #     - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
+
+  # solr:
+  #   build:
+  #     dockerfile: docker/solr/Dockerfile
+  #     context: .
+  #   container_name: "${PROJECT_NAME}_solr"
+  #   environment:
+  #     - JVM_OPTS=-Xms512m -Xmx1024m
+  #   labels:
+  #     - "traefik.http.services.${PROJECT_NAME}_solr.loadbalancer.server.port=8983"
+  #     - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
+  #   volumes:
+  #     - ./docker/solr/ATIHSolR-conf:/ATIHSolR-conf
+  #     - ./docker/solr/mycores:/data
+  #   command: solr-create -c scansante -d /ATIHSolR-conf
+
+  # crond:
+  #   build:
+  #     dockerfile: docker/crond/Dockerfile
+  #     context: .
+  #   container_name: "${PROJECT_NAME}_crond"
+  #   environment:
+  #     CRONTAB: "0 * * * * drush -r /var/www/html/web cron"
+  #   command: sudo -E LD_PRELOAD=/usr/lib/preloadable_libiconv.so crond -f -d 0
+  #   volumes:
+  #     -  ./web:/var/www/html/web:cached
+
+  # memcached:
+  #   container_name: "${PROJECT_NAME}_memcached"
+  #   image: memcached
