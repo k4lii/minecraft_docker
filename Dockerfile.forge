@@ -32,8 +32,7 @@ RUN git clone git@github.com:k4lii/mc_backup.git
 
 RUN 0 */1 * * *  /home/username/test.sh
 
-# RUN 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
-
+# RUN 
 
 # RUN java -jar forge-1.19.2-43.1.7-installer.jar --installServer
 CMD /bin/bash
