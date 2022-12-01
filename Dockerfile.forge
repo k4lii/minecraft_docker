@@ -1,7 +1,7 @@
 FROM openjdk:20-slim-buster
 
 ARG FORGE_VERSION
-# ARG VANILLA
+# ARG GIT_TOKEN
 
 RUN apt update -y && apt install curl -y
 # ARG USER
@@ -21,9 +21,19 @@ RUN chmod -R g+w $MC_DIR
 RUN usermod -aG $GROUP $USER
 
 #download minecraft server for choosen version
-RUN curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/$FORGE_VERSION/forge-$FORGE_VERSION-installer.jar
+# RUN curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/$FORGE_VERSION/forge-$FORGE_VERSION-installer.jar
 
 
 USER $USER
-RUN java -jar forge-1.19.2-43.1.7-installer.jar --installServer
+
+# RUN if [[ -z "$arg" ]] ; then echo Argument not provided ; else echo Argument is $arg ; fi
+
+RUN git clone git@github.com:k4lii/mc_backup.git
+
+RUN 0 */1 * * *  /home/username/test.sh
+
+# RUN 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
+
+
+# RUN java -jar forge-1.19.2-43.1.7-installer.jar --installServer
 CMD /bin/bash
