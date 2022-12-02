@@ -1,14 +1,11 @@
 FROM openjdk:20-slim-buster
 
-ARG FORGE_VERSION
-# ARG VANILLA
+ARG VANILLA_VERSION
+# ARG GIT_TOKEN
 
-RUN apt update -y && apt install curl -y
-#download minecraft server for choosen version
-
-# RUN curl -O https://launchermeta.mojang.com/mc/game/version_manifest.json
+RUN apt update -y && apt install curl -y && apt install jq -y
 # ARG USER
-ENV GROUP=minecraft_server
+ENV GROUP=mc_group
 ENV USER=creeper
 ENV MC_DIR=/home/$USER/mc
 
@@ -17,15 +14,19 @@ RUN groupadd $GROUP && \
     useradd $USER -d /home/$USER -m -s /bin/bash
 
 WORKDIR $MC_DIR
-
-RUN curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/$FORGE_VERSION/forge-$FORGE_VERSION-installer.jar
-
 #changing folder groups root to custom group + giving permissions R+W 
-RUN chgrp $GROUP -R $MC_DIR
+RUN chown -R $USER:$GROUP $MC_DIR
 RUN chmod -R g+w $MC_DIR
 #put USER into groups who have permissions on MC_DIR
 RUN usermod -aG $GROUP $USER
 
+#download minecraft server for choosen version
+
 USER $USER
-# RUN java -jar forge-1.19.2-43.1.7-installer.jar --installServer
-CMD /bin/bash
+
+RUN curl -O $(curl -s $(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -j '.["versions"][] | select(.id=="1.19.2").url') | jq -j '.["downloads"].server.url')
+
+RUN java -jar server.jar  && sed -i 's/eula=false/eula=true/g' eula.txt
+# ENV MINECRAFT_VERSION_FILE=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json | jq '.["versions"][] | select(.id=="$VANILLA_VERSION").url')
+
+CMD java -jar server.jar
