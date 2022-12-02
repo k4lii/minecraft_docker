@@ -1,15 +1,13 @@
 FROM openjdk:20-slim-buster
 
-ARG VANILLA_VERSION
-# ARG GIT_TOKEN
-
 RUN apt update -y && apt install curl -y && apt install jq -y
-# ARG USER
+
 ENV GROUP=mc_group
 ENV USER=creeper
+ENV PORT=5000
 ENV MC_DIR=/home/$USER/mc
 
-#creating new custom group + a new system user 
+#creating new custom group + a new system user
 RUN groupadd $GROUP && \
     useradd $USER -d /home/$USER -m -s /bin/bash
 
@@ -20,13 +18,11 @@ RUN chmod -R g+w $MC_DIR
 #put USER into groups who have permissions on MC_DIR
 RUN usermod -aG $GROUP $USER
 
-#download minecraft server for choosen version
+COPY ./entrypoint_vanilla.sh /tmp/entrypoint_vanilla.sh
+RUN chmod +x /tmp/entrypoint_vanilla.sh
+
 
 USER $USER
+EXPOSE $PORT
 
-RUN curl -O $(curl -s $(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -j '.["versions"][] | select(.id=="1.19.2").url') | jq -j '.["downloads"].server.url')
-
-RUN java -jar server.jar  && sed -i 's/eula=false/eula=true/g' eula.txt
-# ENV MINECRAFT_VERSION_FILE=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json | jq '.["versions"][] | select(.id=="$VANILLA_VERSION").url')
-
-CMD java -jar server.jar
+ENTRYPOINT [ "/tmp/entrypoint_vanilla.sh" ]

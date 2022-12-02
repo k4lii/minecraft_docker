@@ -38,4 +38,5 @@ RUN java -jar forge-$FORGE_VERSION-installer.jar --installServer && \
 # CMD ./run.sh --port 8000
 
 
+
 CMD /bin/bash
