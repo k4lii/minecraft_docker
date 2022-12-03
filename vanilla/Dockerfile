@@ -18,11 +18,10 @@ RUN chmod -R g+w $MC_DIR
 #put USER into groups who have permissions on MC_DIR
 RUN usermod -aG $GROUP $USER
 
-COPY ./entrypoint_vanilla.sh /tmp/entrypoint_vanilla.sh
-RUN chmod +x /tmp/entrypoint_vanilla.sh
+COPY ./entrypoint.sh /tmp/entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
 
-
+EXPOSE 25565
 USER $USER
-EXPOSE $PORT
 
-ENTRYPOINT [ "/tmp/entrypoint_vanilla.sh" ]
+ENTRYPOINT [ "/tmp/entrypoint.sh" ]

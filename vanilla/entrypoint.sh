@@ -13,4 +13,5 @@ else
 fi
 echo 'INFO: EULA ACCEPTED'
 
-java -jar server.jar --nogui --port $PORT
+# /bin/bash
+java -Xms1536M -Xmx1536M -jar server.jar nogui
