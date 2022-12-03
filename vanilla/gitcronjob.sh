@@ -1,4 +1,8 @@
 #!/bin/bash
+scriptPath=$(dirname "$(readlink -f "$0")")
+source "${scriptPath}/.env.sh"
+
+echo "USER = ${USER}"
 
 cd /home/$USER/mc/
 

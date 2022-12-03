@@ -13,15 +13,20 @@ else
 fi
 echo 'INFO: EULA ACCEPTED'
 
-echo "Start cron"
-# export GIT_TOKEN=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
-# export GIT_USER=k4lii
-# export GIT_REPO=mc_backup
-echo "*/5 * * * * /tmp/gitcronjob.sh > /proc/1/fd/1 2>&1" >> /etc/cron.d/restart-cron 
-crontab -u $USER /etc/cron.d/restart-cron
-git config --global user.email "lorris.hamdaoui@epitech.eu"
-git config --global user.name "CRON ROBOT"
-cron
+if [ "$BACKUP" == "true" ] ;
+then
+    echo 'INFO: Start Cron'
+    scriptPath=$(dirname "$(readlink -f "$0")")
+    printenv | sed 's/^\(.*\)$/export \1/g' > ${scriptPath}/.env.sh
+    chmod +x ${scriptPath}/.env.sh
+    echo "*/$BACKUP_INTERVAL * * * * /tmp/gitcronjob.sh > /proc/1/fd/1 2>&1" >> /etc/cron.d/restart-cron 
+    crontab -u $USER /etc/cron.d/restart-cron
+    git config --global user.email "$EMAIL"
+    git config --global user.name "CRON ROBOT"
+    cron
+else
+    echo 'INFO: BACKUP DISABLED'
+fi
 
-echo "Start Minecraft Server"
+echo "Start Minecraft Server with Xms=$JAVA_XMS and Xmx=$JAVA_XMX on port=$PORT"
 java -Xms$JAVA_XMS -Xmx$JAVA_XMX -jar server.jar nogui --port $PORT
