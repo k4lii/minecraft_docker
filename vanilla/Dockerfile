@@ -11,6 +11,7 @@ ENV BACKUP_INTERVAL=30
 ENV BACKUP=false
 ENV JAVA_XMS=4096M
 ENV JAVA_XMX=4096M
+ENV MC_VERSION=1.19.2
 # ENV TOKEN
 
 #creating new custom group + a new system user
