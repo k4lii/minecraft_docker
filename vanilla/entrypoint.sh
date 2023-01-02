@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #auto download minecraft server for the choosen version
-curl -O $(curl -s $(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -j '.["versions"][] | select(.id=="1.19.2").url') | jq -j '.["downloads"].server.url')
+curl -O $(curl -s $(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -j '.["versions"][] | select(.id=="$MC_VERSION").url') | jq -j '.["downloads"].server.url')
 
 if [ server.properties ]
 then
