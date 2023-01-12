@@ -1,25 +1,13 @@
 #!/bin/bash
 
-#auto download minecraft server for the choosen version
-echo "$MC_VERSION" #DEBUG
-MC_VERSION_MANIFEST_URL="https://launchermeta.mojang.com/mc/game/version_manifest.json"
-MC_VERSION_URL=$(curl -s ${MC_VERSION_MANIFEST_URL} | jq -r '.["versions"][] | select(.id=="'$MC_VERSION'").url')
-MC_SERVER_URL=$(curl -s ${MC_VERSION_URL} | jq -r '.["downloads"].server.url')
-
-if [ -z "$MC_SERVER_URL" ]; then
-  echo "Error: Invalid version or version not found"
-  exit 1
-else
-  curl -O ${MC_SERVER_URL}
-  mv *.jar server.jar
-fi
+# tail -f /dev/null
 
 if [ server.properties ]
 then
     echo 'INFO: server.properties already exist'
     echo "eula=true" > eula.txt
 else
-    java -jar server.jar --nogui --initSettings  && sed -i 's/eula=false/eula=true/g' eula.txt
+    java -jar server.jar --installServer && sed -i 's/eula=false/eula=true/g' eula.txt
     echo 'WARN: server.properties doesnt exist, a blank one will be generated'
 fi
 echo 'INFO: EULA ACCEPTED'

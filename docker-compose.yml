@@ -17,3 +17,6 @@ services:
       JAVA_XMS: 4096M
       JAVA_XMX: 4096M
       MC_VERSION: 1.19.2
+    # dns:
+    #   - 172.19.224.1
+    #   - 8.8.8.8
