@@ -1,11 +1,11 @@
 FROM openjdk:20-slim-buster
 
 RUN apt update -y && apt install curl -y && apt install jq -y && \
-    apt-get -y install cron && apt install git -y  && apt install rsync -y
+    apt-get -y install cron && apt install git -y  && apt install rsync -y && apt install wget -y
 
 ENV GROUP=mc_group
 ENV USER=creeper
-# ENV PORT=5000
+ENV PORT=5000
 ENV MC_DIR=/home/$USER/mc
 ENV BACKUP_INTERVAL=30
 ENV BACKUP=false
@@ -31,6 +31,7 @@ COPY ./entrypoint.sh /tmp/entrypoint.sh
 COPY ./gitcronjob.sh /tmp/gitcronjob.sh
 RUN chmod +x /tmp/entrypoint.sh /tmp/gitcronjob.sh
 
-USER $USER
+# USER $USER
+EXPOSE $PORT
 
 ENTRYPOINT [ "/tmp/entrypoint.sh" ]

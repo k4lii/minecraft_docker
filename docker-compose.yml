@@ -1,0 +1,19 @@
+version: "3.5"
+
+volumes:
+  db-vol:
+services:
+  minecraft:
+    build:
+      context: ./vanilla
+      dockerfile: Dockerfile
+    container_name: "minecraft_vanilla"
+    volumes:
+      - ./test.sh:/tmp/test.sh
+    environment:
+      MC_DIR: /home/$USER/mc
+      BACKUP_INTERVAL: 30
+      BACKUP: false
+      JAVA_XMS: 4096M
+      JAVA_XMX: 4096M
+      MC_VERSION: 1.19.2
