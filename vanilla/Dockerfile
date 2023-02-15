@@ -3,8 +3,6 @@ FROM openjdk:20-slim-buster
 RUN apt update -y && apt install curl -y && apt install jq -y && \
     apt-get -y install cron && apt install git -y  && apt install rsync -y && apt install wget -y
 
-
-# MC_TYPE = forge or vanilla
 ENV GROUP=mc_group
 ENV USER=creeper
 ENV PORT=5000

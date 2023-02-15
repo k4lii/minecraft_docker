@@ -3,20 +3,38 @@ version: "3.5"
 volumes:
   db-vol:
 services:
-  minecraft:
-    build:
-      context: ./vanilla
-      dockerfile: Dockerfile
+  minecraft_vanilla:
+    image: k4liii/minecraft-vanilla:latest
     container_name: "minecraft_vanilla"
     volumes:
-      - ./test.sh:/tmp/test.sh
+      - ~/minecraft_docker/server.properties_1.19.2:/home/creeper/mc/server.properties
+      - db-vol:/home/creeper/mc/
     environment:
-      MC_DIR: /home/$USER/mc
       BACKUP_INTERVAL: 30
       BACKUP: false
       JAVA_XMS: 4096M
       JAVA_XMX: 4096M
+      PORT: 6000
       MC_VERSION: 1.19.2
-    # dns:
-    #   - 172.19.224.1
-    #   - 8.8.8.8
+      #TOKEN: xxxxxxxxxxxxxxxx
+      #GIT_REPO: xxxxxxxxxxxxxx
+    ports:
+      - 6000:6000
+
+  minecraft_forge:
+    image: k4liii/minecraft-forge:latest
+    container_name: "minecraft_forge"
+    volumes:
+      - ~/minecraft_docker/server.properties_1.19.2:/home/creeper/mc/server.properties
+      - db-vol:/home/creeper/mc/
+    environment:
+      BACKUP_INTERVAL: 30
+      BACKUP: false
+      JAVA_XMS: 4096M
+      JAVA_XMX: 4096M
+      PORT: 6000
+      MC_VERSION: 1.19.3-44.1.5
+      #TOKEN: xxxxxxxxxxxxxxxx
+      #GIT_REPO: xxxxxxxxxxxxxx
+    ports:
+      - 6000:6000
