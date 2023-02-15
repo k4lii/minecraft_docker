@@ -40,4 +40,8 @@ else
 fi
 
 echo "Start Minecraft Server with Xms=$JAVA_XMS and Xmx=$JAVA_XMX on port=$PORT"
-java -Xms$JAVA_XMS -Xmx$JAVA_XMX -jar server.jar nogui --port $PORT
+# java -Xms$JAVA_XMS -Xmx$JAVA_XMX -jar server.jar nogui --port $PORT
+
+java -jar forge-$FORGE_VERSION-installer.jar nogui --port $PORT
+# RUN java -jar forge-$FORGE_VERSION-installer.jar --installServer && \
+#     rm forge-$FORGE_VERSION-installer.jar

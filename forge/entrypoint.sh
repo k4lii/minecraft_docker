@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# tail -f /dev/null
+# #download minecraft server for choosen version on forge
+curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/$MC_VERSION/forge-$MC_VERSION-installer.jar
 
 if [ server.properties ]
 then
