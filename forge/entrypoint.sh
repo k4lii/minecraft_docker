@@ -2,16 +2,17 @@
 
 # #download minecraft server for choosen version on forge
 curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/$MC_VERSION/forge-$MC_VERSION-installer.jar
+mv *.jar server.jar
+java -jar server.jar --installServer
+./run.sh && sed -i 's/eula=false/eula=true/g' eula.txt
+echo 'INFO: EULA ACCEPTED'
 
 if [ server.properties ]
 then
     echo 'INFO: server.properties already exist'
-    echo "eula=true" > eula.txt
 else
-    java -jar server.jar --installServer && sed -i 's/eula=false/eula=true/g' eula.txt
     echo 'WARN: server.properties doesnt exist, a blank one will be generated'
 fi
-echo 'INFO: EULA ACCEPTED'
 
 if [ "$BACKUP" == "true" ] ;
 then
@@ -27,6 +28,3 @@ then
 else
     echo 'INFO: BACKUP DISABLED'
 fi
-
-echo "Start Minecraft Server with Xms=$JAVA_XMS and Xmx=$JAVA_XMX on port=$PORT"
-java -Xms$JAVA_XMS -Xmx$JAVA_XMX -jar server.jar nogui --port $PORT

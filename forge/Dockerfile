@@ -5,7 +5,6 @@ RUN apt update -y && apt install curl -y && apt install jq -y && \
 
 ENV GROUP=mc_group
 ENV USER=creeper
-ENV PORT=5000
 ENV MC_DIR=/home/$USER/mc
 ENV BACKUP_INTERVAL=30
 ENV BACKUP=false
@@ -19,9 +18,10 @@ RUN groupadd $GROUP && \
     useradd $USER -d /home/$USER -m -s /bin/bash
 
 WORKDIR $MC_DIR
-#changing folder groups root to custom group + giving permissions R+W 
+#changing folder groups root to custom group + giving permissions R+W
 RUN chown -R $USER:$GROUP $MC_DIR
-RUN chmod -R g+w $MC_DIR
+#chmod 700 foldername will give read, write, and execute permissions for the user only
+RUN chmod -R 700 $MC_DIR
 RUN chmod u+s /usr/sbin/cron
 RUN chown -R $USER:$GROUP /etc/cron.d/
 #put USER into groups who have permissions on MC_DIR
@@ -31,10 +31,6 @@ COPY ./entrypoint.sh /tmp/entrypoint.sh
 COPY ./gitcronjob.sh /tmp/gitcronjob.sh
 RUN chmod +x /tmp/entrypoint.sh /tmp/gitcronjob.sh
 
-RUN curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/$MC_VERSION/forge-$MC_VERSION-installer.jar
-RUN mv *.jar server.jar
-
-USER $USER
-EXPOSE $PORT
-
+# USER $USER
+EXPOSE 25565
 ENTRYPOINT [ "/tmp/entrypoint.sh" ]
