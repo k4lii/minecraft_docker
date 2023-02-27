@@ -34,7 +34,7 @@ services:
       JAVA_XMX: 4096M
       PORT: 6000
       MC_VERSION: 1.19.2-43.2.0
-      TOKEN: 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
+      TOKEN: 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
       GIT_REPO: git@github.com:k4lii/mc_backup.git
     ports:
       - 6000:25565
