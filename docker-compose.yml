@@ -26,6 +26,8 @@ services:
     container_name: "minecraft_forge"
     volumes:
       - ./forge/data:/home/creeper/mc/
+      # - ./forge/mods:/home/creeper/mc/mods
+      # - ./forge/world:/home/creeper/mc/world
     environment:
       BACKUP_INTERVAL: 15
       BACKUP: false
