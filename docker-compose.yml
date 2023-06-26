@@ -29,7 +29,7 @@ services:
       - ./forge/data:/home/creeper/mc/
     environment:
       BACKUP_INTERVAL: 15
-      BACKUP: true
+      BACKUP: false
       JAVA_XMS: 4096M
       JAVA_XMX: 4096M
       PORT: 6000
@@ -37,4 +37,4 @@ services:
       TOKEN: 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
       GIT_REPO: git@github.com:k4lii/mc_backup.git
     ports:
-      - 6000:25565
+      - 25000:25565
