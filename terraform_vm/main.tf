@@ -18,7 +18,6 @@ provider "cloudflare" {
   email   = var.cloudflare_email
   api_key = var.cloudflare_api_key
 }
-
 resource "google_compute_instance" "vm_instance" {
   name         = var.instance_name
   machine_type = var.machine_type
@@ -41,6 +40,8 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   tags = ["web"]
+
+  # allow_stopping_for_update = true  // Add this line
 }
 
 resource "google_compute_firewall" "allow_ports" {
