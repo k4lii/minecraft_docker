@@ -25,7 +25,6 @@ services:
     build: forge
     container_name: "minecraft_forge"
     volumes:
-      - ./server.properties_1.19.2:/home/creeper/mc/server.properties
       - ./forge/data:/home/creeper/mc/
     environment:
       BACKUP_INTERVAL: 15
@@ -33,7 +32,7 @@ services:
       JAVA_XMS: 4096M
       JAVA_XMX: 4096M
       PORT: 6000
-      MC_VERSION: 1.19.2-43.2.0
+      MC_VERSION: 1.19.2-43.2.3
       TOKEN: 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
       GIT_REPO: git@github.com:k4lii/mc_backup.git
     ports:
