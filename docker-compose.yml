@@ -21,21 +21,30 @@ services:
   #   ports:
   #     - 6000:6000
 
-  minecraft_forge:
-    build: forge
-    container_name: "minecraft_forge"
+  # minecraft_forge:
+  #   build: forge
+  #   container_name: "minecraft_forge"
+  #   volumes:
+  #     - ./forge/data:/home/creeper/mc/
+  #   environment:
+  #     BACKUP_INTERVAL: 15
+  #     BACKUP: false
+  #     JAVA_XMS: 4096M
+  #     JAVA_XMX: 4096M
+  #     PORT: 6000
+  #     MC_VERSION: 1.19.2-43.2.3
+  #     TOKEN: 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
+  #     GIT_REPO: git@github.com:k4lii/mc_backup.git
+  #   ports:
+  #     - 25000:25565
+
+  minecraft_fabric:
+    build: fabric
+    container_name: "minecraft_fabric"
     volumes:
       - ./forge/data:/home/creeper/mc/
-      # - ./forge/mods:/home/creeper/mc/mods
-      # - ./forge/world:/home/creeper/mc/world
     environment:
-      BACKUP_INTERVAL: 15
-      BACKUP: false
       JAVA_XMS: 4096M
       JAVA_XMX: 4096M
-      PORT: 6000
-      MC_VERSION: 1.19.2-43.2.3
-      TOKEN: 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
-      GIT_REPO: git@github.com:k4lii/mc_backup.git
     ports:
       - 25000:25565
