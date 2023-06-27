@@ -42,7 +42,7 @@ services:
     build: fabric
     container_name: "minecraft_fabric"
     volumes:
-      - ./forge/data:/home/creeper/mc/
+      - ./fabric/data:/home/creeper/mc/
     environment:
       JAVA_XMS: 4096M
       JAVA_XMX: 4096M

@@ -1,0 +1,235 @@
+{
+	id: "3E34934F09B08365"
+	group: ""
+	order_index: 0
+	filename: "welcome_to_bmc_fabric_1192"
+	title: " Tutorial"
+	icon: {
+		id: "ftbquests:custom_icon"
+		Count: 1b
+		tag: {
+			Icon: "patchouli:textures/items/book_blue.png"
+		}
+	}
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "Welcome to Better MC!"
+			icon: {
+				id: "minecraft:book"
+				Count: 1b
+				tag: {
+					Enchantments: [{
+						id: "aqua_affinity"
+						lvl: 1
+					}]
+				}
+			}
+			x: 1.5d
+			y: 2.0d
+			subtitle: "To start the tutorial, click on this quest and read the description."
+			description: [
+				"This tutorial will guide you through some basic features. Don't worry, it won't take &otoo &rlong!"
+				""
+				"To start, click the checkmark under the word \"&9Tasks&r\". New quests will start to appear!"
+			]
+			size: 2.0d
+			id: "6A52090D6BC064D7"
+			tasks: [{
+				id: "1B0800437C68C43A"
+				type: "checkmark"
+				title: "Click me!"
+			}]
+			rewards: [{
+				id: "78B2C19A7C655588"
+				type: "item"
+				item: "minecraft:bread"
+				count: 3
+			}]
+		}
+		{
+			icon: {
+				id: "ftbquests:custom_icon"
+				Count: 1b
+				tag: {
+					Icon: "ftbteams:textures/teams.png"
+				}
+			}
+			x: 0.5d
+			y: 0.0d
+			subtitle: "Read my description!"
+			description: [
+				"The icon in the top left of the screen is the FTB Teams menu. This allows you to add other players to your team."
+				""
+				"Next to the FTB Teams icon is the Quest Book icon, which allows you to access the Quest Book at any time."
+				""
+				"When you hover over your armor slots, your Trinket slots will become visible. Some items, such as Elytras and Totems can be equipped here."
+				""
+				"Try equipping the Charm of Life from the quest reward in your Necklace slot!"
+			]
+			dependencies: ["6A52090D6BC064D7"]
+			invisible: true
+			invisible_until_tasks: 1
+			id: "2958CA7FA6FD3E4F"
+			tasks: [
+				{
+					id: "0DD3C1416FC34FA1"
+					type: "checkmark"
+					title: "Inventory"
+				}
+				{
+					id: "380A99374727D6D8"
+					type: "item"
+					disable_toast: true
+					item: "minecraft:bread"
+				}
+			]
+			rewards: [{
+				id: "649C9C6CB3EB241E"
+				type: "item"
+				item: "twilightforest:charm_of_life_1"
+			}]
+		}
+		{
+			icon: {
+				id: "ftbquests:custom_icon"
+				Count: 1b
+				tag: {
+					Icon: "ftbquests:textures/item/book.png"
+				}
+			}
+			x: 1.5d
+			y: 0.0d
+			subtitle: "Read my description!"
+			description: [
+				"&9Tasks &rare things that need to be done to complete a quest. If a task is an item, clicking on it will show its recipe."
+				""
+				"&6Rewards &rare what you get after completing all &9Tasks&r. Click to claim."
+				""
+				"The pin icon at the top right will pin a quest to your screen."
+			]
+			dependencies: ["6A52090D6BC064D7"]
+			invisible: true
+			invisible_until_tasks: 1
+			id: "175099CF5696829E"
+			tasks: [
+				{
+					id: "21428FE253D34D4E"
+					type: "checkmark"
+					title: "Quests"
+				}
+				{
+					id: "08EDA62F0B406C49"
+					type: "item"
+					disable_toast: true
+					item: "minecraft:bread"
+				}
+			]
+			rewards: [{
+				id: "34B145F40A6C1F3B"
+				type: "item"
+				item: "minecraft:torch"
+				count: 3
+			}]
+		}
+		{
+			title: "Controls"
+			icon: {
+				id: "ftbquests:custom_icon"
+				Count: 1b
+				tag: {
+					Icon: "ftblibrary:textures/icons/player.png"
+				}
+			}
+			x: 2.5d
+			y: 0.0d
+			subtitle: "Read my description!"
+			description: [
+				"Press R while hovering over an item to view its Recipe"
+				""
+				"Press U while hovering over an item to view its Uses"
+				""
+				"Press Left Alt to Crawl"
+				""
+				"Press H to open and configure the Emote Wheel"
+				""
+				"Hold ~ while using a tool with the Vein Mining enchant to activate Vein Mining"
+				""
+				"Press I to open your Crafting Table without placing it first"
+				""
+				"Press B while a Backpack is on your Back Slot to open it"
+				""
+				"Press C to Zoom"
+				""
+				"Press M to open the World Map"
+				""
+			]
+			dependencies: ["6A52090D6BC064D7"]
+			invisible: true
+			invisible_until_tasks: 1
+			id: "2165E80C52C79992"
+			tasks: [
+				{
+					id: "6A64112F92690241"
+					type: "checkmark"
+					title: "Click me!"
+				}
+				{
+					id: "2B23CADA52D45FA0"
+					type: "item"
+					disable_toast: true
+					item: "minecraft:bread"
+				}
+			]
+			rewards: [{
+				id: "3B11CCACEEBA0E58"
+				type: "item"
+				item: "byg:holly_sapling"
+			}]
+		}
+		{
+			icon: {
+				id: "ftbquests:custom_icon"
+				Count: 1b
+				tag: {
+					Icon: "forge:textures/gui/search.png"
+				}
+			}
+			x: 0.5d
+			y: -1.5d
+			description: [
+				"At the bottom of the inventory, you may have noticed a search bar."
+				"This is the &dRoughly Enough Items&r, or &dREI&r, search bar. "
+				"If you type \"Wood\", for example, the &dREI &ritem list at the right of the screen will show all items with \"Wood\" in the name."
+				""
+				"Adding a @ at the start of the search query, it will show the items from a specific mod, for example @Adorn"
+				""
+				"Adding a # at the start of the search query, it will show all items with a specific tag, for example #logs"
+				""
+				"To favorite an item, drag it from &dREI &ritem list to the left side of the screen."
+			]
+			dependencies: ["2958CA7FA6FD3E4F"]
+			invisible: true
+			invisible_until_tasks: 2
+			id: "139DAA6E8CF4267A"
+			tasks: [
+				{
+					id: "74C85348A8B837EB"
+					type: "checkmark"
+					title: "Roughly Enough Items"
+				}
+				{
+					id: "4DA5F1B1964BE2A7"
+					type: "item"
+					item: "twilightforest:charm_of_life_1"
+				}
+			]
+			rewards: [{
+				id: "0094E694BCFF6481"
+				type: "xp_levels"
+				xp_levels: 1
+			}]
+		}
+	]
+}

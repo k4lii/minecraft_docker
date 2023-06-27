@@ -1,0 +1,374 @@
+{
+	id: "4E33D80DA11F2414"
+	group: "799D8360B26E9792"
+	order_index: 2
+	filename: "oddities"
+	title: " &7Miscellaneous"
+	icon: {
+		id: "naturescompass:naturescompass"
+		Count: 1b
+		tag: { }
+	}
+	default_quest_shape: "circle"
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "Craft a &6Bounty Board"
+			x: -2.0d
+			y: -3.5d
+			subtitle: "Bounties have varying levels of rewards. You can craft decrees to get new bounties."
+			id: "5C797A855DD3A665"
+			tasks: [{
+				id: "6836555BDE4256E6"
+				type: "item"
+				item: "bountiful:bountyboard"
+			}]
+			rewards: [{
+				id: "320AB3B627C0A946"
+				type: "item"
+				item: {
+					id: "bountiful:decree"
+					Count: 1b
+					tag: {
+						"bountiful:decree_data": "{}"
+					}
+				}
+			}]
+		}
+		{
+			title: "Craft a &6Bartering Station"
+			x: -0.5d
+			y: -3.5d
+			subtitle: "Used to barter with several nearby piglins at once."
+			id: "0A9E44CE37CA44CF"
+			tasks: [{
+				id: "1289FB70EFF02AFB"
+				type: "item"
+				item: "barteringstation:bartering_station"
+			}]
+			rewards: [{
+				id: "34FF59DDC6CABDBD"
+				type: "item"
+				item: "minecraft:gold_ingot"
+				count: 3
+			}]
+		}
+		{
+			title: "Craft a &6Trading Post"
+			x: -3.5d
+			y: -3.5d
+			subtitle: "Used to trade with several nearby villagers at once."
+			id: "4185D9740B80E39D"
+			tasks: [{
+				id: "0405A07D7EBAB67C"
+				type: "item"
+				item: "tradingpost:trading_post"
+			}]
+			rewards: [
+				{
+					id: "2FFB4275C1B23EB0"
+					type: "item"
+					item: "minecraft:emerald"
+					count: 3
+				}
+				{
+					id: "6A9AC271C6593169"
+					type: "item"
+					item: "adorn:traders_manual"
+				}
+			]
+		}
+		{
+			title: "Craft a &2Nature's Compass"
+			x: -2.0d
+			y: -2.0d
+			subtitle: "Used to locate biomes."
+			id: "5F0FC5A5035E29B0"
+			tasks: [{
+				id: "351D2EAFAE0F9CB7"
+				type: "item"
+				item: {
+					id: "naturescompass:naturescompass"
+					Count: 1b
+					tag: { }
+				}
+			}]
+			rewards: [{
+				id: "66DC1A3116737C3F"
+				type: "item"
+				item: "adorn:stone_torch"
+				count: 8
+			}]
+		}
+		{
+			title: "Craft a &3Trading Station"
+			x: -3.5d
+			y: -2.0d
+			subtitle: "Only useful in multiplayer. Allows for easy trading with other players."
+			id: "6B470812378B8254"
+			tasks: [{
+				id: "408DBB64EE534461"
+				type: "item"
+				item: "adorn:trading_station"
+			}]
+			rewards: [{
+				id: "6819762A22074A86"
+				type: "item"
+				item: {
+					id: "minecraft:splash_potion"
+					Count: 1b
+					tag: {
+						Potion: "goblintraders:powerful_instant_health"
+					}
+				}
+			}]
+		}
+		{
+			title: "Craft an &5Altar"
+			x: -0.5d
+			y: -2.0d
+			subtitle: "Used to increase an &5enchantment &rlevel on an item in return for a &4curse&r. Most of it's crafting ingredients can be found underground in some biomes&r."
+			id: "1137432ADCFEC509"
+			tasks: [{
+				id: "74E388214A93A9E7"
+				type: "item"
+				item: "biomemakeover:altar"
+			}]
+			rewards: [{
+				id: "7F559D73B16FD397"
+				type: "item"
+				item: "biomemakeover:cooked_crab"
+				count: 5
+			}]
+		}
+		{
+			title: "Craft an &aXP Book"
+			x: -3.5d
+			y: -0.5d
+			subtitle: "Stores up to &a30 &rlevels. Can be upgraded up to Tier 3."
+			id: "22135D7A4301D684"
+			tasks: [{
+				id: "410B726B778B0E9E"
+				type: "item"
+				item: {
+					id: "xp_storage:xp_book"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "6635A80C76852EE7"
+				type: "xp_levels"
+				xp_levels: 5
+			}]
+		}
+		{
+			title: "Craft a &f&lSmooth Quartz Elevator"
+			x: 1.0d
+			y: 1.0d
+			subtitle: "Allows for easy transport on the same Y axis."
+			id: "22D9C9224D94E1AF"
+			tasks: [{
+				id: "620815F85F6D6C46"
+				type: "item"
+				item: "quartzelv:smooth_quartz_elevator"
+			}]
+			rewards: [{
+				id: "72DB1D79337C0884"
+				type: "item"
+				item: "minecraft:ender_pearl"
+			}]
+		}
+		{
+			title: "Craft a &8Waystone"
+			x: -0.5d
+			y: -0.5d
+			subtitle: "Allows for easy transportation between &lany &rtwo places. Longer transport may consume &aexperience&r."
+			id: "554FCDBDC9485FA2"
+			tasks: [{
+				id: "1B1C89CF79BF35BC"
+				type: "item"
+				item: "fwaystones:waystone"
+			}]
+			rewards: [{
+				id: "50A9E08747A7AB37"
+				type: "item"
+				item: "bosses_of_mass_destruction:charged_ender_pearl"
+			}]
+		}
+		{
+			title: "Craft an &cUncrafting Table"
+			x: 1.0d
+			y: -3.5d
+			subtitle: "Turns items back into the ingredients used to craft them. Map focuses can be found in the Twilight Forest."
+			id: "1CE4F2F108792335"
+			tasks: [{
+				id: "1F966B37AD4A878A"
+				type: "item"
+				item: "twilightforest:uncrafting_table"
+			}]
+			rewards: [{
+				id: "2E59C933B2EE00DB"
+				type: "item"
+				item: "twilightforest:fiery_ingot"
+			}]
+		}
+		{
+			title: "Craft a &eSeason Calendar"
+			x: 1.0d
+			y: -2.0d
+			subtitle: "Tells you the current season. Seasons affect many things - especially crop growth and weather."
+			id: "1E65308E968AF323"
+			tasks: [{
+				id: "1D1FF6E46FF202A9"
+				type: "item"
+				item: "seasons:season_calendar"
+			}]
+			rewards: [{
+				id: "78C6465E25E01517"
+				type: "item"
+				item: "minecraft:melon_seeds"
+				count: 3
+			}]
+		}
+		{
+			title: "Craft &2Greenhouse Glass"
+			x: 1.0d
+			y: -0.5d
+			subtitle: "Lessens the effects of seasons when placed above crops."
+			id: "461958821F94D6F8"
+			tasks: [{
+				id: "3BC5379E4BF3E5C5"
+				type: "item"
+				item: "seasons:greenhouse_glass"
+			}]
+			rewards: [{
+				id: "0DF19841AF1F1DD0"
+				type: "item"
+				item: "adorn:wheat_seed_crate"
+			}]
+		}
+		{
+			title: "Craft a &9Totem of Void Undying"
+			x: -3.5d
+			y: 2.5d
+			subtitle: "A totem that prevents you from dying in the void, teleporting you to a safe place. Can be equipped in the Trinket slot."
+			id: "12965C7AB98FA9C6"
+			tasks: [{
+				id: "266B22E4299C23A6"
+				type: "item"
+				item: "voidtotem:totem_of_void_undying"
+			}]
+			rewards: [{
+				id: "4FD53411FE953111"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+		}
+		{
+			title: "Craft &dSoap"
+			x: -2.0d
+			y: 1.0d
+			subtitle: "Reverts &cd&ay&ee&bd &ritems, cleans &6Copper Blocks&r, un&cd&ay&ee&bs &rSheep, and turns &2Sticky &rPistons into Pistons."
+			id: "7236C066E7C894B3"
+			tasks: [{
+				id: "3171E8D9D224BCAA"
+				type: "item"
+				item: "supplementaries:soap"
+			}]
+			rewards: [{
+				id: "156E76792F358643"
+				type: "item"
+				item: "supplementaries:blackboard"
+			}]
+		}
+		{
+			title: "Make a &eStraw Golem"
+			x: -0.5d
+			y: 1.0d
+			subtitle: "To make a &eStraw Golem&r, place a Carved Pumpkin on top of a Hay Bale. &eStraw Golems &rwill harvest and replant crops, and then deposit to nearby containers. You can shift click the golem and then a container to specify which. Each golem will live for 7 days. This can be extended with wheat. If you have an apple in your hand, they will follow you. Every 2 days, they will want an apple to continue working. Iron Golems and farm animals love Straw Golems. Raiders don't."
+			id: "69A55664BC35DC41"
+			tasks: [{
+				id: "6325FB8B13996FBF"
+				type: "observation"
+				icon: "minecraft:hay_block"
+				timer: 0L
+				observe_type: 5
+				to_observe: "strawgolem:strawgolem"
+			}]
+			rewards: [{
+				id: "532056C698E7304F"
+				type: "item"
+				item: "minecraft:apple"
+				count: 3
+			}]
+		}
+		{
+			title: "Craft an &6XP Conduit"
+			x: -2.0d
+			y: -0.5d
+			subtitle: "When worn in a Ring slot, 75% of the &aexperience &ryou get get will be transferred into your &aXP Book&r. Can be repaired with &1Cristalis Lazuli&r."
+			dependencies: ["22135D7A4301D684"]
+			id: "6F10C7FC41EC0463"
+			tasks: [{
+				id: "319822DAEDCDD1C7"
+				type: "item"
+				item: {
+					id: "xp_storage_trinkets:xp_conduit"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "296063B66EAE3F50"
+				type: "xp_levels"
+				xp_levels: 5
+			}]
+		}
+		{
+			title: "Craft an &bXP Saver"
+			x: -3.5d
+			y: 1.0d
+			subtitle: "When worn in the Necklace slot, 50% of the &aexperience &ryou die with will be transferred into your &aXP Book&r. Can be repaired with &1Cristalis Lazuli&r."
+			dependencies: ["22135D7A4301D684"]
+			id: "5AAA1D8E90544F8A"
+			tasks: [{
+				id: "163BF25B796DA3B5"
+				type: "item"
+				item: {
+					id: "xp_storage_trinkets:xp_saver"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "2713004902B5FCE9"
+				type: "xp_levels"
+				xp_levels: 5
+			}]
+		}
+		{
+			title: "Craft a &bDiamond Magnum Torch"
+			x: -2.0d
+			y: 2.5d
+			subtitle: "One of three Magnum torch variants. Prevents monster spawns in a 2048 block radius."
+			id: "0B23AB3C41A686EA"
+			tasks: [{
+				id: "435BC24FB0CA106A"
+				type: "item"
+				item: "magnumtorch:diamond_magnum_torch"
+			}]
+			rewards: [{
+				id: "0FAF1947C5D1B541"
+				type: "item"
+				item: "farmersdelight:noodle_soup"
+			}]
+		}
+	]
+}

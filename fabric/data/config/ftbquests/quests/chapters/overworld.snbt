@@ -1,0 +1,204 @@
+{
+	id: "51FE38DFB14D1D53"
+	group: "59C90AA1B128306B"
+	order_index: 0
+	filename: "overworld"
+	title: " &aOverworld"
+	icon: "minecraft:grass_block"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			x: -2.0d
+			y: 0.0d
+			subtitle: "Found in swamps."
+			optional: true
+			id: "2DD01E3267ED7DD8"
+			tasks: [{
+				id: "73EDD270A388C26D"
+				type: "kill"
+				title: "Defeat a Shaman"
+				icon: {
+					id: "minecraft:trident"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "adventurez:shaman"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "706434EC34D0837C"
+					type: "item"
+					item: "bettertridents:trident_fragment"
+					count: 3
+				}
+				{
+					id: "6C5901B1D5BFEE80"
+					type: "xp_levels"
+					xp_levels: 10
+				}
+			]
+		}
+		{
+			x: -0.5d
+			y: 0.0d
+			subtitle: "Found in cold biomes."
+			optional: true
+			id: "1C7E9580565509D2"
+			tasks: [{
+				id: "01C2EFC344021C4C"
+				type: "kill"
+				title: "Kill a Mammoth"
+				icon: "adventurez:mammoth_tusk"
+				entity: "adventurez:mammoth"
+				value: 1L
+			}]
+			rewards: [{
+				id: "2277B0E27893A120"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+		}
+		{
+			x: 1.0d
+			y: 0.0d
+			subtitle: "Found inside of Amethyst Geodes underground."
+			optional: true
+			id: "2D3BD496319AD33C"
+			tasks: [{
+				id: "64CB4ECC614E2DC9"
+				type: "kill"
+				title: "Kill a Amethyst Golem"
+				icon: "minecraft:amethyst_cluster"
+				entity: "adventurez:amethyst_golem"
+				value: 1L
+			}]
+			rewards: [{
+				id: "0A4CD9FA9613B1C7"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			x: 2.5d
+			y: 0.0d
+			subtitle: "Found in deserts."
+			optional: true
+			id: "128D2885B2B4AE7E"
+			tasks: [{
+				id: "1841F40D9B6D5AD6"
+				type: "kill"
+				title: "Kill a Desert Rhino"
+				icon: "adventurez:rhino_leather"
+				entity: "adventurez:desert_rhino"
+				value: 1L
+			}]
+			rewards: [{
+				id: "24ED0226D837A7F2"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+		}
+		{
+			x: 4.0d
+			y: 0.0d
+			subtitle: "Found during thunderstorms."
+			optional: true
+			id: "7D6D7B7DD55F344D"
+			tasks: [{
+				id: "354A89017B6C62D7"
+				type: "kill"
+				title: "Kill a Summoner"
+				icon: "minecraft:skeleton_skull"
+				entity: "adventurez:summoner"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "50D523F0F7D40E96"
+					type: "item"
+					item: "bosses_of_mass_destruction:soul_star"
+					count: 2
+				}
+				{
+					id: "481650A6A644AE81"
+					type: "xp"
+					xp: 100
+				}
+			]
+		}
+		{
+			title: "Defeat the &bNight Lich"
+			x: 5.5d
+			y: 0.0d
+			subtitle: "Found in &3cold &fbiomes. "
+			id: "63D82D9074FC34E3"
+			tasks: [{
+				id: "727F7A1D307E65A9"
+				type: "kill"
+				title: "Defeat the Night Lich"
+				icon: "bosses_of_mass_destruction:ancient_anima"
+				entity: "bosses_of_mass_destruction:lich"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "37B03BE444D6331F"
+					type: "item"
+					item: "bosses_of_mass_destruction:mob_ward"
+				}
+				{
+					id: "7C048ADB6DF63093"
+					type: "item"
+					item: "bosses_of_mass_destruction:void_lily"
+				}
+				{
+					id: "780F82E67B338DAE"
+					type: "xp"
+					xp: 100
+				}
+			]
+		}
+		{
+			title: "Defeat the &5Void Blossom"
+			x: 7.0d
+			y: 0.0d
+			subtitle: "Found in rare caves at the bottom of the &aOverworld&r. &dVoid Lillies&r will point towards the &5Void Blossom&r."
+			id: "24969D5FC76CDBB3"
+			tasks: [{
+				id: "3DB51E789F4F929F"
+				type: "kill"
+				title: "Defeat the Void Blossom"
+				icon: "bosses_of_mass_destruction:void_thorn"
+				entity: "bosses_of_mass_destruction:void_blossom"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "68DFBB0E19E00038"
+					type: "item"
+					item: {
+						id: "bosses_of_mass_destruction:earthdive_spear"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "2894E9EFC59F34EC"
+					type: "xp"
+					xp: 100
+				}
+				{
+					id: "7DB8C021AA698380"
+					type: "item"
+					item: "biomemakeover:enchanted_totem"
+				}
+			]
+		}
+	]
+}
