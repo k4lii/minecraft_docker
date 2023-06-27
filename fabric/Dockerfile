@@ -1,4 +1,4 @@
-FROM openjdk:17-slim-buster
+FROM openjdk:18-slim-buster
 
 RUN apt update -y && apt install curl -y && apt install jq -y && \
     apt-get -y install cron && apt install git -y  && apt install rsync -y && \
