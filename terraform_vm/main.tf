@@ -25,6 +25,8 @@ resource "google_compute_instance" "vm_instance" {
   boot_disk {
     initialize_params {
       image = var.disk_image
+      size  = 40  # Set the size of the boot disk to 40GB
+      type  = "pd-ssd"  # Specify the SSD type for the boot disk
     }
   }
 

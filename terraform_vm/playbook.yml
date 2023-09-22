@@ -43,3 +43,15 @@
       ansible.builtin.wait_for_connection:
         delay: 10
         timeout: 300
+
+    # - name: Copy files and folder to the VM
+    #   ansible.builtin.copy:
+    #     src: ../fabric
+    #     dest: 
+    #     remote_src: yes
+
+    # - name: Copy the "fabric" folder to the VM
+    #   ansible.builtin.copy:
+    #     src: /path/to/your/fabric-folder
+    #     dest: /path/on/remote/vm/
+    #     remote_src: yes
